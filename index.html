@@ -1,193 +1,313 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Table with Text Inputs</title>
-  <style>
-    body {
-        font-size: 3vh; /* Adjust as needed */
-    }
-    table {
-        width: 100%;
-        table-layout: fixed;
-    } 
-    th, td {
-        word-wrap: break-word;
-        text-align: center;
-        vertical-align: middle;
-    }
-    input[type=number] {
-        width: 50%;
-        font-size: 3vh;
-    }
-  </style>
+    <title>Meet Scores</title>
+    <style>
+        body {
+            font-size: 3vh;
+        }
+
+        table {
+            width: 100%;
+            table-layout: fixed;
+        }
+
+        th,
+        td {
+            word-wrap: break-word;
+            text-align: center;
+            vertical-align: middle;
+            padding: 10px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            font-size: 3vh;
+        }
+
+        button {
+            width: 30%;
+            margin: 0 10px;
+            font-size: 3vh;
+        }
+    </style>
 </head>
+
 <body>
+    <table>
+        <tr>
+            <th>
+                <input type="radio" id="sixteen" value="1" name="score_map"><label for="sixteen">16</label>
+                <input type="radio" id="twelve" value="0" name="score_map" checked><label for="twelve">12</label>
+            </th>
+            <th colspan="2"><input class="team_name" type="text"></th>
+            <th colspan="2"><input class="team_name" type="text"></th>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="add_team()">+</button>
+                <button onclick="remove_team()">-</button>
+            </td>
+            <td colspan="2" class="team_score"></td>
+            <td colspan="2" class="team_score"></td>
+        </tr>
+        <tr>
+            <td>DV</td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+        </tr>
+        <tr>
+            <td>MR</td>
+            <td colspan="2"><input class="rel" type="number"></td>
+            <td colspan="2"><input class="rel" type="number"></td>
+        </tr>
+        <tr>
+            <td>2F</td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+        </tr>
+        <tr>
+            <td>IM</td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+        </tr>
+        <tr>
+            <td>50</td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+        </tr>
+        <tr>
+            <td>FL</td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+        </tr>
+        <tr>
+            <td>1F</td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+        </tr>
+        <tr>
+            <td>5F</td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+        </tr>
+        <tr>
+            <td>2$</td>
+            <td colspan="2"><input class="rel" type="number"></td>
+            <td colspan="2"><input class="rel" type="number"></td>
+        </tr>
+        <tr>
+            <td>BK</td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+        </tr>
+        <tr>
+            <td>BR</td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+            <td><input class="ind" type="number"></td>
+        </tr>
+        <tr>
+            <td>4$</td>
+            <td colspan="2"><input class="rel" type="number"></td>
+            <td colspan="2"><input class="rel" type="number"></td>
+        </tr>
+    </table>
 
-<table>
-  <tr>
-      <th></th>
-      <th>LT</th>
-      <th>LT</th>
-      <th>FW</th>
-      <th>FW</th>
-  </tr>
-  <tr>
-    <td></td> 
-    <td id="ltscore"></td>
-    <td></td>
-    <td id="wyscore"></td>
-    <td></td>
-  </tr>
-  <tr>
-  <td>DV</td> 
-    <td><input class="ltind" type="number"></td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-  </tr>
-  <tr>
-    <td>MR</td>
-    <td><input class="ltrel" type="number"></td>
-    <td></td>
-    <td><input class="wyrel" type="number"></td>
-    <td></td>
-  </tr>
-  <tr>  
-    <td>2F</td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-  </tr>
-  <tr>  
-    <td>IM</td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-  </tr>
-  <tr>  
-    <td>50</td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-  </tr>
-  <tr>  
-    <td>FL</td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-  </tr>
-  <tr>  
-    <td>1F</td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-  </tr>
-  <tr>  
-    <td>5F</td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-  </tr>
-  <tr>
-    <td>2$</td>
-    <td><input class="ltrel" type="number"></td>
-    <td></td>
-    <td><input class="wyrel" type="number"></td>
-    <td></td>
-  </tr>
-  <tr>  
-    <td>BK</td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-  </tr>
-  <tr>  
-    <td>BR</td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="ltind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-    <td><input class="wyind" type="number"></td>
-  </tr>
-  <tr>
-    <td>4$</td>
-    <td><input class="ltrel" type="number"></td>
-    <td></td>
-    <td><input class="wyrel" type="number"></td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td><button style="width: 30vh;height: 6vh;font-size: 3vh;" onclick="saveToLocalStorage()">Save</button></td>
-  </tr>
-</table>
+    <script>
+        const score_maps = [
+            [0, 16, 13, 12, 11, 10, 9, 7, 5, 4, 3, 2, 1],
+            [0, 20, 17, 16, 15, 14, 13, 12, 11, 9, 7, 6, 5, 4, 3, 2, 1]
+        ]
 
-<script>
 
-score_map = [0, 16, 13, 12, 11, 10, 9, 7, 5, 4, 3, 2, 1]
+        const add_team = (team, team_data) => {
+            const table = document.getElementsByTagName('table')[0];
 
-function writeValues() {
-  let lt_ind = document.getElementsByClassName('ltind');
-  let wy_ind = document.getElementsByClassName('wyind');
-  let lt_rel = document.getElementsByClassName('ltrel');
-  let wy_rel = document.getElementsByClassName('wyrel');
+            const header = table.rows[0];
+            const header_name = header.insertCell(-1);
+            header_name.colSpan = 2;
+            if (team) {
+                header_name.innerHTML = `<input class="team_name" type="text" value="${team}">`;
+            } else {
+                header_name.innerHTML = '<input class="team_name" type="text">';
+            }
 
-  wy_score = 0;
-  lt_score = 0;
-  for(let i=0; i<lt_ind.length; i++) {
-    place = localStorage.getItem('lt_ind-' + i) || '';
-    lt_ind[i].value = place;
-    lt_score += score_map[place]
-  }
-  for(let i=0; i<wy_ind.length; i++) {
-    place = localStorage.getItem('wy_ind-' + i) || '';
-    wy_ind[i].value = place;
-    wy_score += score_map[place]
-  }
-  for(let i=0; i<lt_rel.length; i++) {
-    place = localStorage.getItem('lt_rel-' + i) || '';
-    lt_rel[i].value = place;
-    lt_score += score_map[place] * 2;
-  }
-  for(let i=0; i<wy_rel.length; i++) {
-    place = localStorage.getItem('wy_rel-' + i) || '';
-    wy_rel[i].value = place;
-    wy_score += score_map[place] * 2;
-  }
-  document.getElementById('wyscore').innerHTML = wy_score
-  document.getElementById('ltscore').innerHTML = lt_score
-}
+            const score_row = table.rows[1];
+            const score_value = score_row.insertCell(-1);
+            score_value.colSpan = 2;
+            score_value.className = "team_score";
 
-writeValues();
+            let score_data_index = 0;
+            let swimmer_index = 0;
+            individual_indices = [2, 4, 5, 6, 7, 8, 9, 11, 12];
+            individual_indices.forEach(index => {
+                const row = table.rows[index];
+                swimmer_index = 0;
+                [row.insertCell(-1), row.insertCell(-1)].forEach(cell => {
+                    if (team_data) {
+                        cell.innerHTML = `<input class="ind" type="number" value="${team_data["individuals"][score_data_index][swimmer_index]}">`;
+                    } else {
+                        cell.innerHTML = '<input class="ind" type="number">';
+                    }
+                    swimmer_index++;
+                });
+                score_data_index++;
+            });
 
-function saveToLocalStorage() {
-  let lt_ind = document.getElementsByClassName('ltind');
-  let wy_ind = document.getElementsByClassName('wyind');
-  let lt_rel = document.getElementsByClassName('ltrel');
-  let wy_rel = document.getElementsByClassName('wyrel');
+            let relay_index = 0;
+            relay_indices = [3, 10, 13];
+            relay_indices.forEach(index => {
+                const row = table.rows[index];
+                new_relay = row.insertCell(-1)
+                if (team_data) {
+                    new_relay.innerHTML = `<input class="rel" type="number" value="${team_data["relays"][relay_index]}">`;
+                } else {
+                    new_relay.innerHTML = '<input class="rel" type="number">';
+                }
+                new_relay.colSpan = 2;
+                relay_index++;
+            });
+        }
 
-  // Store the current values in localStorage
-  for(let i=0; i<lt_ind.length; i++) {
-    localStorage.setItem('lt_ind-' + i, lt_ind[i].value);
-  }
-  for(let i=0; i<wy_ind.length; i++) {
-    localStorage.setItem('wy_ind-' + i, wy_ind[i].value);
-  }
-  for(let i=0; i<lt_rel.length; i++) {
-    localStorage.setItem('lt_rel-' + i, lt_rel[i].value);
-  }
-  for(let i=0; i<wy_rel.length; i++) {
-    localStorage.setItem('wy_rel-' + i, wy_rel[i].value);
-  }
-  writeValues();
-}
-</script>
+        const remove_team = () => {
+            const table = document.getElementsByTagName('table')[0];
+            const rows = table.rows;
+
+
+            for (let i = 0; i < rows.length; i++) {
+                const cells = rows[i].cells;
+
+                if (cells.length === 1) {
+                    return;
+                }
+
+                last_cell = cells[cells.length - 1];
+                second_to_last_cell = cells[cells.length - 2];
+
+                last_cell.remove();
+                if (last_cell.colSpan == 1) {
+                    second_to_last_cell.remove();
+                }
+            }
+        }
+
+
+        const write_from_local_storage = () => {
+            const teams_to_places = JSON.parse(localStorage.getItem('teams_to_places') || "{}");
+
+            teams = Object.keys(teams_to_places);
+
+            const table = document.getElementsByTagName('table')[0];
+            const header = table.rows[0];
+
+            curr_team_cols = header.cells.length - 1;
+            for (let i = 0; i < curr_team_cols; i++) {
+                remove_team();
+            }
+            
+            teams.forEach((team) => {
+                team_data = teams_to_places[team];
+                add_team(team, team_data);
+            });
+
+            for (let i = 0; i < teams.length; i++) {
+                const team_data = teams_to_places[teams[i]];
+                const individual_scores = team_data["individuals"];
+
+
+                const relay_scores = team_data["relays"];
+
+
+            }
+
+        };
+        write_from_local_storage();
+
+        const calculate_scores = () => {
+            let teams = document.getElementsByClassName('team_name');
+            let score_texts = document.getElementsByClassName('team_score');
+            let inds = document.getElementsByClassName('ind');
+            let rels = document.getElementsByClassName('rel');
+
+            score_index = -1;
+            scoring_system = document.getElementsByName('score_map').forEach(element => {
+                if (element.checked) {
+                    score_index = parseInt(element.value, 10);
+                }
+            });
+
+            score_map = score_maps[score_index];
+
+            num_teams = teams.length;
+
+            scores = {};
+            for (let i = 0; i < teams.length; i++) {
+                const team = teams[i].value;
+                scores[team] = {
+                    "individuals": [],
+                    "relays": []
+                };
+            }
+
+            for (let i = 0; i < inds.length; i += num_teams * 2) {
+                for (j = 0; j < num_teams * 2; j += 2) {
+                    curr_team = teams[j / 2].value;
+                    swimmer_a = inds[i + j].value;
+                    swimmer_b = inds[i + j + 1].value;
+                    scores[curr_team]["individuals"].push([
+                        (swimmer_a || ""),
+                        (swimmer_b || "")
+                    ]);
+                }
+            }
+
+            for (let i = 0; i < rels.length; i += num_teams) {
+                for (j = 0; j < num_teams; j++) {
+                    curr_team = teams[j].value;
+                    relay = rels[i + j].value;
+                    scores[curr_team]["relays"].push((relay || ""));
+                }
+            }
+
+            localStorage.setItem('teams_to_places', JSON.stringify(scores));
+            for (let i = 0; i < teams.length; i++) {
+                const team = teams[i].value;
+                if (scores.hasOwnProperty(team)) {
+                    individual_total = scores[team]["individuals"].flatMap(i => i).reduce((t, x) => t + (score_map[parseInt(x, 10)] || 0), 0);
+                    relay_total = scores[team]["relays"].reduce((t, x) => t + (score_map[parseInt(x, 10)] || 0) * 2, 0);
+                    score_texts[i].innerHTML = individual_total + relay_total
+                } else {
+                    score_texts[i].innerHTML = '<span style="color: red">Team Name Must Be Unique</span>'
+                }
+                delete scores[team];
+            }
+
+        }
+        window.addEventListener('click', calculate_scores);
+        window.addEventListener('keyup', calculate_scores);
+        calculate_scores();
+    </script>
 
 </body>
+
 </html>
